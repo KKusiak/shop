@@ -1,21 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import React from "react";
+import { Provider } from "react-redux";
+import { createStore, combineReducers } from "redux";
+import productsReducer from "./store/reducers/products";
+import cartReducer from "./store/reducers/cart";
+import ShopNavigator from "./navigation/shopNavigator";
+const rootReducer = combineReducers({
+  products: productsReducer,
+  cart: cartReducer,
+});
 
+const store = createStore(rootReducer);
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}>
+      <StatusBar style='auto' />
+      <ShopNavigator></ShopNavigator>
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
