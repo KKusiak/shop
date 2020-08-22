@@ -37,7 +37,15 @@ ProductsOvervierScreen.navigationOptions = (navData) => {
   return {
     headerRight: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
-        <Item iconSize={24} title='Cart' iconName='ios-cart' color='#000' />
+        <Item
+          iconSize={24}
+          title='Cart'
+          iconName='ios-cart'
+          color='#000'
+          onPress={() => {
+            navData.navigation.navigate("Cart");
+          }}
+        />
       </HeaderButtons>
     ),
   };
